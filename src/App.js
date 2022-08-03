@@ -5,14 +5,19 @@ import Entry from "./components/Entry/entry";
 
 function App() {
   const [todos, setTodos] = useState([
-    { text: "Get up early", done: true },
-    { text: "Have a breakfast", done: false },
-    { text: "Brush your teeth", done: false },
+    { text: "Get up early", done: true , entryMode:false },
+    { text: "Have a breakfast", done: false, entryMode:false },
+    { text: "Brush your teeth", done: false , entryMode:false},
   ]);
   return (
-    <div>
-      <Entry todos={todos} setTodos={setTodos}></Entry>
-      <List todos={todos} setTodos={setTodos}></List>
+    <div id="App">
+      <div id="container">
+        <h1>TODOS</h1>
+        <div id="components">
+          <Entry todos={todos} setTodos={setTodos} />
+          <List todos={todos} setTodos={setTodos} />
+        </div>
+      </div>
     </div>
   );
 }

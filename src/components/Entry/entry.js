@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Entry({ todos, setTodos }) {
-  const [entry, setEntry] = useState({ text: "", done: false });
+  const [entry, setEntry] = useState({ text: "", done: false, entryMode:false });
 
   const onSubmitEntry = (e) => {
     e.preventDefault();
@@ -14,14 +14,9 @@ function Entry({ todos, setTodos }) {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmitEntry}>
-        <input
-          onChange={onChangeInput}
-          placeholder="Add something to be done"
-        />
-      </form>
-    </div>
+    <form onSubmit={onSubmitEntry}>
+      <input onChange={onChangeInput} placeholder="Add something to be done" />
+    </form>
   );
 }
 

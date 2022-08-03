@@ -8,19 +8,51 @@ function List({ todos, setTodos }) {
     setTodos(newTodos);
   };
 
+  const onTypeText = (index) => (e) => {
+    let newTodos = [...todos];
+    newTodos[index].text = e.target.value;
+    setTodos(newTodos);
+  };
+
+  const onEntryMode = (index) => (e) => {
+    let newTodos = [...todos];
+    newTodos[index].entryMode = true;
+    setTodos(newTodos);
+  };
+
+  const onBlurInput = (index) => (e) => {
+    console.log("blurrrr");
+    let newTodos = [...todos];
+    newTodos[index].entryMode = false;
+    setTodos(newTodos);
+  };
+
   return (
     <ul>
       {todos.map((todo, index) => (
         <li key={index}>
-          <span>{todo.text}</span>
-          <span>
+          <div className="checkbox">
             <input
               type="checkbox"
               value={index}
               checked={todo.done}
               onChange={onToggleDone}
             />
-          </span>
+          </div>
+          <div>
+            {todo.entryMode ? (
+              <div>
+                <input
+                  autoFocus
+                  value={todo.text}
+                  onChange={onTypeText(index)}
+                  onBlur={onBlurInput(index)}
+                />
+              </div>
+            ) : (
+              <div onClick={onEntryMode(index)}>{todo.text}</div>
+            )}
+          </div>
         </li>
       ))}
     </ul>
