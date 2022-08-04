@@ -21,7 +21,6 @@ function List({ todos, setTodos }) {
   };
 
   const onBlurInput = (index) => (e) => {
-    console.log("blurrrr");
     let newTodos = [...todos];
     newTodos[index].entryMode = false;
     setTodos(newTodos);
@@ -39,9 +38,9 @@ function List({ todos, setTodos }) {
               onChange={onToggleDone}
             />
           </div>
-          <div>
+          <>
             {todo.entryMode ? (
-              <div>
+              <div className="editEntry">
                 <input
                   autoFocus
                   value={todo.text}
@@ -52,7 +51,7 @@ function List({ todos, setTodos }) {
             ) : (
               <div onClick={onEntryMode(index)}>{todo.text}</div>
             )}
-          </div>
+          </>
         </li>
       ))}
     </ul>

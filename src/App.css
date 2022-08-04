@@ -20,8 +20,6 @@
   width: 100%;
 }
 
-
-
 form > input {
   /* -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box; */
@@ -29,6 +27,9 @@ form > input {
   padding: 0 10px;
   width: 100%;
   height: 50px;
+  font-size: larger !important;
+  border: none;
+  box-shadow: inset 0px -3px 6px -4px rgb(0 0 0 / 25%);
 }
 
 form input::placeholder {
@@ -41,15 +42,15 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  /* border-top: 0.25px solid rgba(0, 0, 0, 0.228); */
+  border-top: 0.25px solid rgba(0, 0, 0, 0.1);
 }
 
 ul > li {
-  height: 48px;
+  height: 50px;
   font-size: larger;
   display: flex;
   align-items: center;
-  border-bottom: 0.25px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 0.25px solid rgba(0, 0, 0, 0.1);
 
   /* box-shadow: 0.3px 0 0 0 black, 0 0.3px 0 0 black, 0.3px 0.3px 0 0 black,
     0.3px 0 0 0 black inset, 0 0.3px 0 0 black inset; */
@@ -57,5 +58,36 @@ ul > li {
 
 .checkbox {
   margin-left: 5px;
-  margin-right: 20px;
+  margin-right: 10px;
+}
+
+.checkbox > input {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  vertical-align: middle;
+  /* border: 1px solid #dcdcdc; */
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');;
+	/* background-repeat: no-repeat;
+	background-position: center left; */
+}
+.checkbox > input:checked {
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+}
+
+.editEntry {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.editEntry > input {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  font: inherit;
 }
