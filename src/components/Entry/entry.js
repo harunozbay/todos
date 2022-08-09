@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./entry.css";
 
 function Entry({ todos, setTodos }) {
   const [entry, setEntry] = useState({
@@ -6,6 +7,26 @@ function Entry({ todos, setTodos }) {
     done: false,
     entryMode: false,
   });
+
+  const onToggleAll = (e) => {
+    let newTodos = [...todos];
+    // if all is done then uncheck all
+    if (todos.every((todo) => todo.done)) {
+      newTodos.forEach((todo) => {
+        todo.done = false;
+      });
+      setTodos(newTodos);
+      e.target.style.color = "#9b9b9b";
+    }
+    // if some is undone then check all
+    else {
+      newTodos.forEach((todo) => {
+        todo.done = true;
+      });
+      setTodos(newTodos);
+      e.target.style.color = "#474747";
+    }
+  };
 
   const onSubmitEntry = (e) => {
     e.preventDefault();
@@ -20,9 +41,17 @@ function Entry({ todos, setTodos }) {
   };
 
   return (
-    <form onSubmit={onSubmitEntry}>
-      <input onChange={onChangeInput} placeholder="Add something to be done" />
-    </form>
+    <div id="newTodoEntry">
+      <button type="button" id="toggleAll" onClick={onToggleAll}>
+        &gt;
+      </button>
+      <form onSubmit={onSubmitEntry}>
+        <input
+          onChange={onChangeInput}
+          placeholder="Add something to be done"
+        />
+      </form>
+    </div>
   );
 }
 

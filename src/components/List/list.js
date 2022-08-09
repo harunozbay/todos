@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import "./list.css"
 
 function List({ todos, setTodos }) {
   const onToggleDone = (e) => {
@@ -26,6 +26,12 @@ function List({ todos, setTodos }) {
     setTodos(newTodos);
   };
 
+  const onRemove = (index) => (e) => {
+    let newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <ul>
       {todos.map((todo, index) => (
@@ -49,8 +55,16 @@ function List({ todos, setTodos }) {
                 />
               </div>
             ) : (
-              <div onClick={onEntryMode(index)}>{todo.text}</div>
+              <div className="entryRow">
+                <div className="todoText" onClick={onEntryMode(index)}>
+                  {todo.text}
+                </div>
+                <button type="button" className="remove" onClick={onRemove(index)}>
+                  x
+                </button>
+              </div>
             )}
+
           </>
         </li>
       ))}
