@@ -1,0 +1,66 @@
+#filterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* 1x width */
+#todoCount {
+  margin-left: 10px;
+  line-height: 30px;
+  font-size: 0.8em;
+  font-style: italic;
+  color: #595959;
+  flex: 1;
+}
+
+/* 2x width */
+#filters {
+  display: flex;
+  justify-content: center;
+  flex: 2;
+}
+
+button {
+  background-color: inherit;
+  cursor: pointer;
+  margin: 0 2px;
+  color: #595959;
+  font-size: small;
+}
+
+.viewOption {
+  border: 1px solid transparent;
+}
+
+.viewOption:hover {
+  border: 1px solid #cc9a9a8c;
+}
+
+.currentView {
+  border: 1px solid #af5b5e9b;
+}
+
+/* 1x width */
+#clearCompleted {
+  position: relative;
+  margin-right: 2px;
+  right: 0;
+  display: flex;
+  justify-content: right;
+  flex: 1;
+}
+
+#clearCompleted > button {
+  line-height: 30px;
+  font-size: small;
+  border: none;
+}
+
+#clearCompleted > button:hover {
+  text-decoration: underline;
+}

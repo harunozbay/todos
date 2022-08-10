@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./entry.css";
 
 function Entry({ todos, setTodos }) {
@@ -8,6 +8,16 @@ function Entry({ todos, setTodos }) {
     entryMode: false,
   });
 
+  let toggleAllBtn = useRef();
+
+  useEffect(() => {
+    if (toggleAllBtn.current) {
+      if (todos.every((todo) => todo.done))
+        toggleAllBtn.current.style.color = "#474747";
+      else toggleAllBtn.current.style.color = "#9b9b9b";
+    }
+  }, [todos]);
+
   const onToggleAll = (e) => {
     let newTodos = [...todos];
     // if all is done then uncheck all
@@ -16,7 +26,6 @@ function Entry({ todos, setTodos }) {
         todo.done = false;
       });
       setTodos(newTodos);
-      e.target.style.color = "#9b9b9b";
     }
     // if some is undone then check all
     else {
@@ -24,7 +33,6 @@ function Entry({ todos, setTodos }) {
         todo.done = true;
       });
       setTodos(newTodos);
-      e.target.style.color = "#474747";
     }
   };
 
@@ -42,9 +50,18 @@ function Entry({ todos, setTodos }) {
 
   return (
     <div id="newTodoEntry">
-      <button type="button" id="toggleAll" onClick={onToggleAll}>
-        &gt;
-      </button>
+      <>
+        {todos.length !== 0 && (
+          <button
+            type="button"
+            id="toggleAll"
+            onClick={onToggleAll}
+            ref={toggleAllBtn}
+          >
+            &gt;
+          </button>
+        )}
+      </>
       <form onSubmit={onSubmitEntry}>
         <input
           onChange={onChangeInput}

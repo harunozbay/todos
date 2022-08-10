@@ -59,6 +59,12 @@ ul {
   .todoText {
     padding-left: 10px;
   }
+
+  .todoTextDone{
+    padding-left: 10px;
+    color: rgba(199, 199, 199, 0.749);
+    text-decoration: line-through;
+  }
   
   .remove {
     display: none;
